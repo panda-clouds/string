@@ -1,5 +1,3 @@
-var path = require('path');
-
 class PCString  {
 
 	constructor() {
@@ -16,7 +14,7 @@ class PCString  {
 		return PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
 	}
 
-	static stringWithOnlyLowercaseLettersHyphensAndNumbers(string){
+	static stringWithOnlyLowercaseLettersHyphensAndNumbers(string) {
 		if(!string) return '';
 		return string.toLowerCase().replace(/[^a-z0-9\-]/g, '');
 		// removed case insensitivity (i) because we use toLowerCase() before
@@ -25,15 +23,15 @@ class PCString  {
 
 	static isString(o) {
 		if(o === null) return false;
-    	return typeof o == "string" || (typeof o == "object" && o.constructor === String);
-    }
+		return typeof o == "string" || (typeof o == "object" && o.constructor === String);
+	}
 
-    static hasWhiteSpace(s) {
-        return s.indexOf(' ') >= 0;
-    } 
-
+	static hasWhiteSpace(s) {
+		return s.indexOf(' ') >= 0;
+	}
 }
 
-module.exports = function() { 
-	this.PCString = PCString;
-}
+module.exports = PCString;
+// function() {
+// 	PCString = PCString;
+// }

@@ -1,206 +1,163 @@
-var fs = require('fs');
- 
-require("../src/PCString.js")();
- 
+const PCString = require("../src/PCString.js");
+
 describe('PCString.isString', () => {
 
-    it('returns false when given number', () => {
-      let moneyString = 5;
-      expect(PCString.isString(moneyString)).toBe(false);  
-    });
+	it('returns false when given number', () => {
+		const moneyString = 5;
+		expect(PCString.isString(moneyString)).toBe(false);
+	});
 
-    it('returns false when given a undefined', () => {
-      let string = undefined;
-      expect(PCString.isString(string)).toBe(false);  
-    });
+	it('returns false when given a undefined', () => {
+		const string = undefined;
+		expect(PCString.isString(string)).toBe(false);
+	});
 
-    it('returns false when given a null', () => {
-      let string = null;
-      expect(PCString.isString(string)).toBe(false);  
-    });
+	it('returns false when given a null', () => {
+		const string = null;
+		expect(PCString.isString(string)).toBe(false);
+	});
 
-    it('returns false when given an object', () => {
-      let string = {};
-      expect(PCString.isString(string)).toBe(false);  
-    });
+	it('returns false when given an object', () => {
+		const string = {};
+		expect(PCString.isString(string)).toBe(false);
+	});
 
-    it('returns false when given an array', () => {
-      let string = [];
-      expect(PCString.isString(string)).toBe(false);  
-    });
+	it('returns false when given an array', () => {
+		const string = [];
+		expect(PCString.isString(string)).toBe(false);
+	});
 
-    it('returns true when given a string', () => {
-      let string = "hello";
-      expect(PCString.isString(string)).toBe(true);  
-    });
+	it('returns true when given a string', () => {
+		const string = "hello";
+		expect(PCString.isString(string)).toBe(true);
+	});
 });
+
 describe('PCString.stringWithWhitespacesRemoved', () => {
- 
-    it('should replace spaces', () => {
-      let string = " A B  C   D    ";
 
-      let newString = PCString.stringWithWhitespacesRemoved(string);
+	it('should replace spaces', () => {
+		const string = " A B  C   D    ";
+		const newString = PCString.stringWithWhitespacesRemoved(string);
+		expect(newString).toBe("ABCD");
+	});
 
-      expect(newString).toBe("ABCD");
-    });
+	it('should replace tabs', () => {
+		const string = "	A	B		C			D				";
+		const newString = PCString.stringWithWhitespacesRemoved(string);
+		expect(newString).toBe("ABCD");
+	});
 
-    it('should replace tabs', () => {
-      let string = "	A	B		C			D				";
+	it('should replace tabs', () => {
+		const string = "	A	B		C			D				";
+		const newString = PCString.stringWithWhitespacesRemoved(string);
+		expect(newString).toBe("ABCD");
+	});
 
-      let newString = PCString.stringWithWhitespacesRemoved(string);
+	it('should replace new lines', () => {
+		const string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
+		const newString = PCString.stringWithWhitespacesRemoved(string);
+		expect(newString).toBe("ABCD");
+	});
 
-      expect(newString).toBe("ABCD");
-    });
-
-    it('should replace tabs', () => {
-      let string = "	A	B		C			D				";
-
-      let newString = PCString.stringWithWhitespacesRemoved(string);
-
-      expect(newString).toBe("ABCD");
-    });
-
-    it('should replace new lines', () => {
-      let string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
-
-      let newString = PCString.stringWithWhitespacesRemoved(string);
-
-      expect(newString).toBe("ABCD");
-    });
-
-    it('should handle null', () => {
-      let string = null;
-
-      let newString = PCString.stringWithWhitespacesRemoved(string);
-
-      expect(newString).toBe('');
-    });
+	it('should handle null', () => {
+		const string = null;
+		const newString = PCString.stringWithWhitespacesRemoved(string);
+		expect(newString).toBe('');
+	});
 
 
 });
 
 describe('PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers', () => {
-  
-    it('should replace underscores', () => {
-      let string = "_A_B__C___D____";
 
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe("abcd");
-    });
+	it('should replace underscores', () => {
+		const string = "_A_B__C___D____";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("abcd");
+	});
 
 
-    it('should replace spaces', () => {
-      let string = " A B  C   D    ";
+	it('should replace spaces', () => {
+		const string = " A B  C   D    ";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("abcd");
+	});
 
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+	it('should replace tabs', () => {
+		const string = "  A B   C     D       ";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("abcd");
+	});
 
-      expect(newString).toBe("abcd");
-    });
+	it('should replace tabs', () => {
+		const string = "  A B   C     D       ";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("abcd");
+	});
 
-    it('should replace tabs', () => {
-      let string = "  A B   C     D       ";
-
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe("abcd");
-    });
-
-    it('should replace tabs', () => {
-      let string = "  A B   C     D       ";
-
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe("abcd");
-    });
-
-    it('should replace new lines', () => {
-      let string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
-
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe("abcd");
-    });
+	it('should replace new lines', () => {
+		const string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("abcd");
+	});
 
 
-    it('should replace new "My Cool Domain"', () => {
-      let string = "My Cool Domain";
+	it('should replace new "My Cool Domain"', () => {
+		const string = "My Cool Domain";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("mycooldomain");
+	});
 
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+	it('should leave hyphens alone', () => {
+		const string = "My-Cool-Domain";
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe("my-cool-domain");
+	});
 
-      expect(newString).toBe("mycooldomain");
-    });
-
-    it('should leave hyphens alone', () => {
-      let string = "My-Cool-Domain";
-
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe("my-cool-domain");
-    });
-
-    it('should handle null', () => {
-      let string = null;
-
-      let newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
-
-      expect(newString).toBe('');
-    });
+	it('should handle null', () => {
+		const string = null;
+		const newString = PCString.stringWithOnlyLowercaseLettersHyphensAndNumbers(string);
+		expect(newString).toBe('');
+	});
 
 
 });
 describe('PCString.hasWhiteSpace', () => {
 
-    it('should detect only spaces', () => {
-      let string = " ";
+	it('should detect only spaces', () => {
+		const string = " ";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(true);
+	});
 
-      let newString = PCString.hasWhiteSpace(string);
+	it('should detect leading spaces', () => {
+		const string = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(true);
+	});
 
-      expect(newString).toBe(true);
-    });
+	it('should detect trailing spaces', () => {
+		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(true);
+	});
 
-    it('should detect leading spaces', () => {
-      let string = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	it('should detect single spaces', () => {
+		const string = "A BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(true);
+	});
 
-      let newString = PCString.hasWhiteSpace(string);
+	it('should detect multiple spaces', () => {
+		const string = " A B  C   D    ";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(true);
+	});
 
-      expect(newString).toBe(true);
-    });
-
-    it('should detect trailing spaces', () => {
-      let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
-
-      let newString = PCString.hasWhiteSpace(string);
-
-      expect(newString).toBe(true);
-    });
-
-    it('should detect single spaces', () => {
-      let string = "A BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-      let newString = PCString.hasWhiteSpace(string);
-
-      expect(newString).toBe(true);
-    });
-
-    it('should detect multiple spaces', () => {
-      let string = " A B  C   D    ";
-
-      let newString = PCString.hasWhiteSpace(string);
-
-      expect(newString).toBe(true);
-    });
-
-    it('should not false positive', () => {
-      let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-!@#$%^&*()";
-
-      let newString = PCString.hasWhiteSpace(string);
-
-      expect(newString).toBe(false);
-    });
-
-    
-
-
+	it('should not false positive', () => {
+		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-!@#$%^&*()";
+		const newString = PCString.hasWhiteSpace(string);
+		expect(newString).toBe(false);
+	});
 });
 
