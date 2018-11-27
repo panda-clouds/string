@@ -14,6 +14,9 @@ pipeline {
             message "✅ All Unit tests passed! Run manual staging instructions now."
             ok "Approve & Deploy Build"
         }
+	steps {
+		sh 'echo "Deploying..."'
+	}
     }
     stage('Deploy') {
 		when {
