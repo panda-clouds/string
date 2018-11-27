@@ -4,27 +4,32 @@ pipeline {
     nodejs 'Node 8.13.0'
   }
   stages {
+    stage('Install') {
+      steps {  
+        sh 'npm install'
+      }
+    }
     stage('Test') {
       steps {  
         sh 'npm test spec/PCString.spec.js'
       }
     }
-    stage('Approval') {
-        input {
-            message "✅ All Unit tests passed! Run manual staging instructions now."
-            ok "Approve & Deploy Build"
-        }
-	steps {
-		sh 'echo "Deploying..."'
-	}
+    stage('Approve') {
+      input {
+        message "✅ All Unit tests passed! Run manual staging instructions now."
+        ok "Approve & Deploy Build"
+      }
+      steps {
+        sh 'echo "Deploying..."'
+      }
     }
     stage('Deploy') {
-		when {
-			branch "master"
-		}
-		environment {
-			NPM_CREDENTIALS = credentials('npm')
-		}
+      when {
+        branch "master"
+      }
+      environment {
+        NPM_CREDENTIALS = credentials('npm')
+      }
       steps {
         sh 'echo "NOT READY- add deploying to npm" && exit 1'
       }
