@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "jasmine": "^3.1.0"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "pretest": "eslint ./src/*.js",
+    "test": "jasmine ./*.spec.js"
+  },
+  "name": "PCString",
+  "description": "description",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panda-clouds/string.git"
+  }
+}
