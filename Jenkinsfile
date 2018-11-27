@@ -4,11 +4,6 @@ pipeline {
     nodejs 'Node 8.13.0'
   }
   stages {
-    stage('Install') {
-      steps {  
-        
-      }
-    }
     stage('Test') {
       steps {
         sh 'npm install'
