@@ -6,11 +6,12 @@ pipeline {
   stages {
     stage('Install') {
       steps {  
-        sh 'npm install'
+        
       }
     }
     stage('Test') {
-      steps {  
+      steps {
+        sh 'npm install'
         sh 'npm test spec/PCString.spec.js'
       }
     }
