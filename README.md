@@ -97,7 +97,8 @@ PCString.domainSafeString(null) // => ''
 Contributions
 -------------
 
-Contribution checklist:
+Pull requests are welcome! here is a checklist to speed things up:
+
 - modify `PCString.js`
 - add unit tests in `PCString.spec.js`
 - run `npm test`
