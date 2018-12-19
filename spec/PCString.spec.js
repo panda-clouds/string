@@ -3,33 +3,84 @@ const PCString = require("../src/PCString.js");
 describe('PCString.isString', () => {
 
 	it('returns false when given number', () => {
-		const moneyString = 5;
-		expect(PCString.isString(moneyString)).toBe(false);
+		const string = 5;
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
 	});
 
 	it('returns false when given a undefined', () => {
 		const string = undefined;
-		expect(PCString.isString(string)).toBe(false);
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
 	});
 
 	it('returns false when given a null', () => {
 		const string = null;
-		expect(PCString.isString(string)).toBe(false);
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
 	});
 
 	it('returns false when given an object', () => {
 		const string = {};
-		expect(PCString.isString(string)).toBe(false);
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
 	});
 
 	it('returns false when given an array', () => {
 		const string = [];
-		expect(PCString.isString(string)).toBe(false);
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
 	});
 
 	it('returns true when given a string', () => {
 		const string = "hello";
-		expect(PCString.isString(string)).toBe(true);
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(true);
+	});
+});
+
+describe('PCString.hasWhitespace', () => {
+
+	it('should return false when null', () => {
+		const string = null;
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(false);
+	});
+
+	it('should detect only spaces', () => {
+		const string = " ";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(true);
+	});
+
+	it('should detect leading spaces', () => {
+		const string = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(true);
+	});
+
+	it('should detect trailing spaces', () => {
+		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(true);
+	});
+
+	it('should detect single spaces', () => {
+		const string = "A BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(true);
+	});
+
+	it('should detect multiple spaces', () => {
+		const string = " A B  C   D    ";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(true);
+	});
+
+	it('should not false positive', () => {
+		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-!@#$%^&*()";
+		const boolResults = PCString.hasWhitespace(string);
+		expect(boolResults).toBe(false);
 	});
 });
 
@@ -64,8 +115,6 @@ describe('PCString.removeWhitespace', () => {
 		const newString = PCString.removeWhitespace(string);
 		expect(newString).toBe('');
 	});
-
-
 });
 
 describe('PCString.domainSafeString', () => {
@@ -118,52 +167,6 @@ describe('PCString.domainSafeString', () => {
 		const string = null;
 		const newString = PCString.domainSafeString(string);
 		expect(newString).toBe('');
-	});
-
-
-});
-describe('PCString.hasWhitespace', () => {
-
-	it('should return false when null', () => {
-		const string = null;
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should detect only spaces', () => {
-		const string = " ";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should detect leading spaces', () => {
-		const string = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should detect trailing spaces', () => {
-		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should detect single spaces', () => {
-		const string = "A BCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should detect multiple spaces', () => {
-		const string = " A B  C   D    ";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(true);
-	});
-
-	it('should not false positive', () => {
-		const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-!@#$%^&*()";
-		const newString = PCString.hasWhitespace(string);
-		expect(newString).toBe(false);
 	});
 });
 
