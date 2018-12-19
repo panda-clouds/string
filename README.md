@@ -1,6 +1,7 @@
 
-[PCString](http://pandaclouds.com)
+PCString
 =========
+maintained by [PandaClouds.com](https://pandaclouds.com)
 
 `PCString` is a lightweight JavaScript library for Node.js that provides additional String methods.
 
