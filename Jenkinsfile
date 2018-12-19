@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Deploy') {
           steps {
-            sh 'npm publish'
+            sh 'npm publish --access=public'
           }
         }
       }
