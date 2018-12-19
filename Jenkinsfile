@@ -26,7 +26,7 @@ pipeline {
             }
           }
           
-          when { environment name: 'DEPLOY', value: true }
+          when { environment name: 'DEPLOY', value: 'true' }
 
           steps {
             sh 'npm publish --access=public'
