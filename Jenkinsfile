@@ -22,7 +22,7 @@ pipeline {
             message "✅ All Unit tests passed!"
             ok "Submit"
             parameters {
-              choice(name: 'DEPLOY_TO_NPM', choices: ['Yes, Deploy', 'No, Skip Deploy'], description: 'Push to npm?')
+              choice(name: 'DEPLOY_TO_NPM', choices: ['No, Skip Deploy', 'Yes, Deploy'], description: 'Push to npm?')
             }
           }
           
