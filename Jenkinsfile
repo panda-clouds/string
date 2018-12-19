@@ -31,8 +31,10 @@ pipeline {
             sh 'npm publish'
           }
         }
+      }
     }
   }
+
   post{
     always {
       deleteDir()
