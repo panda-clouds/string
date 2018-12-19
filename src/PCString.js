@@ -9,8 +9,9 @@ class PCString  {
 		return typeof o == "string" || (typeof o == "object" && o.constructor === String);
 	}
 
-	static hasWhitespace(s) {
-		return s.indexOf(' ') >= 0;
+	static hasWhitespace(string) {
+		if(!string) return false;
+		return string.indexOf(' ') >= 0;
 	}
 
 	static removeWhitespace(string){
