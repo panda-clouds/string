@@ -124,6 +124,12 @@ describe('PCString.domainSafeString', () => {
 });
 describe('PCString.hasWhitespace', () => {
 
+	it('should return false when null', () => {
+		const string = null;
+		const newString = PCString.hasWhitespace(string);
+		expect(newString).toBe(true);
+	});
+
 	it('should detect only spaces', () => {
 		const string = " ";
 		const newString = PCString.hasWhitespace(string);
