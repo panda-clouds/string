@@ -27,8 +27,8 @@ Usage
 var PCString = require('@panda-clouds/string');
 
 // example usage
-PCString.isString("yup!"); // => true;
-PCString.isString(5); // => false;
+PCString.isString('yup!'); // => true;
+PCString.hasWhitespace('ABC'); // => false;
 ```
 
 You can replace PCString with any variable.
