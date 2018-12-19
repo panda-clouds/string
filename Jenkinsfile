@@ -13,22 +13,24 @@ pipeline {
         sh 'npm test spec/PCString.spec.js'
       }
     }
-    stage('Approve') {
-      input {
-        message "✅ All Unit tests passed! Run manual staging instructions now."
-        ok "Approve & Deploy Build"
-      }
-      steps {
-        sh 'echo "Deploying..."'
-      }
-    }
-    stage('Deploy') {
-      when {
-        branch "master"
-      }
-      steps {
-        sh 'npm publish'
-      }
+    stage('Approve  & Deploy') {
+      when { branch "master" }
+      
+      stages {
+        stage('Approve') {
+          input {
+            message "✅ All Unit tests passed! Run manual staging instructions now."
+            ok "Approve & Deploy Build"
+          }
+          steps {
+            sh 'echo "Deploying..."'
+          }
+        }
+        stage('Deploy') {
+          steps {
+            sh 'npm publish'
+          }
+        }
     }
   }
   post{
