@@ -11,7 +11,7 @@
   },
   "name": "@panda-clouds/string",
   "description": "A javascript helper class for strings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name" : "Marc Smith",
               "email" : "mr.marcsmith@me.com",
               "url" : "https://pandaclouds.com"
