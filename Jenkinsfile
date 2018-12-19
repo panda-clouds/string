@@ -24,10 +24,10 @@ pipeline {
         branch "master"
       }
       environment {
-        NPM_CREDENTIALS = credentials('npm')
+        NPM_TOKEN = credentials('npm-mrmarcsmith')
       }
       steps {
-        sh 'echo "NOT READY- add deploying to npm" && exit 1'
+        sh 'npm publish'
       }
     }
   }
