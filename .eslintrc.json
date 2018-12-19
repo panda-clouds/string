@@ -14,7 +14,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "warnIgnored": true,
         "indent": ["error", "tab", { "SwitchCase": 1 }],
         "linebreak-style": ["error", "unix"],
         "no-trailing-spaces": 2,

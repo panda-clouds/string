@@ -9,10 +9,18 @@
     "pretest": "eslint .",
     "test": "jasmine ./spec/*.spec.js"
   },
-  "name": "pc-string",
-  "description": "description",
+  "name": "@panda-clouds/string",
+  "description": "A javascript helper class for strings",
   "version": "1.0.0",
+  "author": { "name" : "Marc Smith",
+              "email" : "mr.marcsmith@me.com",
+              "url" : "https://pandaclouds.com"
+            },
   "license": "MIT",
+  "main": "src/PCString.js",
+  "engines": {
+    "node": ">= 8"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/panda-clouds/string.git"
