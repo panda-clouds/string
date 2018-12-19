@@ -3,6 +3,9 @@ pipeline {
   tools {
     nodejs 'Node 8.13.0'
   }
+  environment {
+    NPM_TOKEN = credentials('npm-mrmarcsmith')
+  }
   stages {
     stage('Test') {
       steps {
@@ -22,9 +25,6 @@ pipeline {
     stage('Deploy') {
       when {
         branch "master"
-      }
-      environment {
-        NPM_TOKEN = credentials('npm-mrmarcsmith')
       }
       steps {
         sh 'npm publish'
