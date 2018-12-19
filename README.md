@@ -24,7 +24,7 @@ Usage
 ### Node.js
 
 ```javascript
-var PCString = require('@panda-clouds/string');
+const PCString = require('@panda-clouds/string');
 
 // example usage
 PCString.isString('yup!'); // => true;
