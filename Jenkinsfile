@@ -13,20 +13,21 @@ pipeline {
         sh 'npm test spec/PCString.spec.js'
       }
     }
-    stage('Approve  & Deploy') {
+    stage('if master') {
       when { branch "master" }
       
       stages {
-        stage('Approve') {
+        stage('Deploy') {
           input {
             message "✅ All Unit tests passed! Run manual staging instructions now."
             ok "Approve & Deploy Build"
+            parameters {
+              booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Push to npm?')
+            }
           }
-          steps {
-            sh 'echo "Deploying..."'
-          }
-        }
-        stage('Deploy') {
+          
+          when { environment name: 'DEPLOY', value: true }
+
           steps {
             sh 'npm publish --access=public'
           }
