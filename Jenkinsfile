@@ -19,14 +19,14 @@ pipeline {
       stages {
         stage('Deploy') {
           input {
-            message "✅ All Unit tests passed! Run manual staging instructions now."
-            ok "Approve & Deploy Build"
+            message "✅ All Unit tests passed!"
+            ok "Submit"
             parameters {
-              booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Push to npm?')
+              choice(name: 'DEPLOY_TO_NPM', choices: ['Yes, Deploy', 'No, Skip Deploy'], description: 'Push to npm?')
             }
           }
           
-          when { environment name: 'DEPLOY', value: 'true' }
+          when { environment name: 'DEPLOY_TO_NPM', value: 'Yes, Deploy' }
 
           steps {
             sh 'npm publish --access=public'
