@@ -9,9 +9,9 @@ maintained by [PandaClouds.com](https://pandaclouds.com)
 Installation
 ------------
 
-1. If you want to use this library, you first need to install the [Node.js] (https://nodejs.org/en/).
+1. If you want to use this library, you first need to install the [Node.js](https://nodejs.org/en/).
 
-2. When you install node.js, will also be installed [npm] (https://www.npmjs.com/).
+2. When you install node.js, will also be installed [npm](https://www.npmjs.com/).
 
 3. Please run the following command.
 
