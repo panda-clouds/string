@@ -32,6 +32,12 @@ describe('PCString.isString', () => {
 		expect(boolResults).toBe(false);
 	});
 
+	it('returns false when given a Date', () => {
+		const string = new Date();
+		const boolResults = PCString.isString(string);
+		expect(boolResults).toBe(false);
+	});
+
 	it('returns true when given a string', () => {
 		const string = "hello";
 		const boolResults = PCString.isString(string);
