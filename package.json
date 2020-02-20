@@ -1,28 +1,33 @@
 {
-  "devDependencies": {
-    "eslint": "^4.18.1",
-    "eslint-plugin-jasmine": "^2.10.1",
-    "jasmine": "^3.1.0"
-  },
-  "dependencies": {},
+  "name": "@panda-clouds/string",
+  "version": "1.1.0",
+  "description": "A javascript helper class for strings",
+  "main": "src/PCString.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "jasmine ./spec/*.spec.js"
+    "test": "jest --coverage"
   },
-  "name": "@panda-clouds/string",
-  "description": "A javascript helper class for strings",
-  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/panda-clouds/string.git"
   },
-  "author": { "name" : "Marc Smith",
-              "email" : "mr.marcsmith@me.com",
-              "url" : "https://github.com/mrmarcsmith"
-            },
+  "keywords": [
+    "string"
+  ],
+  "author": {
+    "name": "Marc Smith",
+    "email": "mr.marcsmith@me.com",
+    "url": "https://github.com/mrmarcsmith"
+  },
   "license": "MIT",
-  "main": "src/PCString.js",
   "engines": {
     "node": ">= 8"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@panda-clouds/eslint-config-panda-clouds": "^0.9.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "jest": "^24.1.0",
+    "eslint": "^5.14.1"
   }
 }
