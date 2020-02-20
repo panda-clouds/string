@@ -1,5 +1,8 @@
 ## PCBash Changelog
 
+### 1.1.1
+- Audit fix
+
 ### 1.1.0
 - Added 'randomId'
 
