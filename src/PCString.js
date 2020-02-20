@@ -19,6 +19,7 @@ class PCString {
 		if (!string) {
 			return '';
 		}
+
 		return string.replace(/\s+/g, '');
 	}
 
@@ -78,7 +79,7 @@ class PCString {
 		return characters.charAt(Math.floor(Math.random() * characters.length));
 	}
 
-static toAlphaLower(str) {
+	static toAlphaLower(str) {
 		if (!str) {
 			return '';
 		}

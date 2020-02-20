@@ -50,12 +50,6 @@ describe('test PCString.isString', () => {
 		expect(boolResults).toBe(false);
 	});
 
-	it('returns false when given a Date', () => {
-		const string = new Date();
-		const boolResults = PCString.isString(string);
-		expect(boolResults).toBe(false);
-	});
-
 	it('returns true when given a string', () => {
 		expect.assertions(1);
 		const string = 'hello';
@@ -171,56 +165,72 @@ describe('test PCString.domainSafeString', () => {
 		expect.assertions(1);
 		const string = ' A B  C   D    ';
 		const newString = PCString.domainSafeString(string);
+
 		expect(newString).toBe('abcd');
 	});
 
 	it('should replace tabs', () => {
-		const string = "  A\tB\t\tC\t\t\tD\t\t\t\t";
+		expect.assertions(1);
+		const string = '  A\tB\t\tC\t\t\tD\t\t\t\t';
 		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("abcd");
+
+		expect(newString).toBe('abcd');
 	});
 
 	it('should replace new lines', () => {
-		const string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
+		expect.assertions(1);
+		const string = '\nA\nB\n\nC\n\n\nD\n\n\n\n';
 		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("abcd");
+
+		expect(newString).toBe('abcd');
 	});
 
 
 	it('should replace new "My Cool Domain"', () => {
-		const string = "My Cool Domain";
+		expect.assertions(1);
+		const string = 'My Cool Domain';
 		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("mycooldomain");
+
+		expect(newString).toBe('mycooldomain');
 	});
 
 	it('should leave hyphens alone', () => {
-		const string = "My-Cool-Domain";
+		expect.assertions(1);
+		const string = 'My-Cool-Domain';
 		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("my-cool-domain");
+
+		expect(newString).toBe('my-cool-domain');
 	});
 
 	it('should handle null', () => {
+		expect.assertions(1);
 		const string = null;
 		const newString = PCString.domainSafeString(string);
+
 		expect(newString).toBe('');
 	});
 });
 
-describe('PCString.toAlphaLower', () => {
+describe('pCString.toAlphaLower', () => {
 	it('should replace underscores', () => {
-		const string = "_A_B__C___D____";
+		expect.assertions(1);
+		const string = '_A_B__C___D____';
 		const newString = PCString.toAlphaLower(string);
-		expect(newString).toBe("abcd");
+
+		expect(newString).toBe('abcd');
 	});
 
 
 	it('should replace spaces', () => {
-		const string = " A B  C   D    ";
+		expect.assertions(1);
+		const string = ' A B  C   D    ';
 		const newString = PCString.toAlphaLower(string);
-		expect(newString).toBe("abcd");
+
+		expect(newString).toBe('abcd');
 	});
 
 	it('should replace new lines', () => {
+		expect.assertions(1);
 		expect.assertions(1);
 		const string = '\nA\nB\n\nC\n\n\nD\n\n\n\n';
 		const newString = PCString.toAlphaLower(string);
@@ -236,24 +246,18 @@ describe('PCString.toAlphaLower', () => {
 		expect(newString).toBe('mycooldomain');
 	});
 
-	it('should leave hyphens alone', () => {
+	it('should replace hyphens', () => {
 		expect.assertions(1);
 		const string = 'My-Cool-Domain';
-		const newString = PCString.domainSafeString(string);
+		const newString = PCString.toAlphaLower(string);
 
-		expect(newString).toBe('my-cool-domain');
-  });
-
-	it('should replace hyphens', () => {
-		const string = "My-Cool-Domain";
-		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("mycooldomain");
+		expect(newString).toBe('mycooldomain');
 	});
 
 	it('should handle null', () => {
 		expect.assertions(1);
 		const string = null;
-		const newString = PCString.domainSafeString(string);
+		const newString = PCString.toAlphaLower(string);
 
 		expect(newString).toBe('');
 	});
