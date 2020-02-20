@@ -14,14 +14,22 @@ class PCString  {
 		return string.indexOf(' ') >= 0;
 	}
 
-	static removeWhitespace(string){
+	static removeWhitespace(string) {
 		if(!string) return '';
 		return string.replace(/\s+/g, '');
 	}
 
-	static domainSafeString(string){
+	static domainSafeString(string) {
 		if(!string) return '';
 		return string.toLowerCase().replace(/[^a-z0-9\-]/g, '');
+	}
+
+	static toAlphaLower(str) {
+		if (!string) {
+			return '';
+		}
+
+		return.toLowerCase().replace(/[^a-z]/g, '');
 	}
 
 }

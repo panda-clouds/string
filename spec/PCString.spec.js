@@ -139,13 +139,7 @@ describe('PCString.domainSafeString', () => {
 	});
 
 	it('should replace tabs', () => {
-		const string = "  A B   C     D       ";
-		const newString = PCString.domainSafeString(string);
-		expect(newString).toBe("abcd");
-	});
-
-	it('should replace tabs', () => {
-		const string = "  A B   C     D       ";
+		const string = "  A\tB\t\tC\t\t\tD\t\t\t\t";
 		const newString = PCString.domainSafeString(string);
 		expect(newString).toBe("abcd");
 	});
@@ -167,6 +161,45 @@ describe('PCString.domainSafeString', () => {
 		const string = "My-Cool-Domain";
 		const newString = PCString.domainSafeString(string);
 		expect(newString).toBe("my-cool-domain");
+	});
+
+	it('should handle null', () => {
+		const string = null;
+		const newString = PCString.domainSafeString(string);
+		expect(newString).toBe('');
+	});
+});
+
+describe('PCString.toAlphaLower', () => {
+	it('should replace underscores', () => {
+		const string = "_A_B__C___D____";
+		const newString = PCString.toAlphaLower(string);
+		expect(newString).toBe("abcd");
+	});
+
+
+	it('should replace spaces', () => {
+		const string = " A B  C   D    ";
+		const newString = PCString.toAlphaLower(string);
+		expect(newString).toBe("abcd");
+	});
+
+	it('should replace new lines', () => {
+		const string = "\nA\nB\n\nC\n\n\nD\n\n\n\n";
+		const newString = PCString.domainSafeString(string);
+		expect(newString).toBe("abcd");
+	});
+
+	it('should replace new "My Cool Domain"', () => {
+		const string = "My Cool Domain";
+		const newString = PCString.domainSafeString(string);
+		expect(newString).toBe("mycooldomain");
+	});
+
+	it('should replace hyphens', () => {
+		const string = "My-Cool-Domain";
+		const newString = PCString.domainSafeString(string);
+		expect(newString).toBe("mycooldomain");
 	});
 
 	it('should handle null', () => {
