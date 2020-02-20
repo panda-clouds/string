@@ -52,6 +52,7 @@ class PCString {
 
 	static randomString(input) {
 		let length;
+		let text = '';
 
 		if (input) {
 			length = input;
@@ -59,7 +60,7 @@ class PCString {
 			length = 10;
 		}
 
-		for (let i = 0; i < length - 1; i++) {
+		for (let i = 0; i < length; i++) {
 			text += PCString.randomChar('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
 		}
 

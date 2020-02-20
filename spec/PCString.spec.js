@@ -337,3 +337,19 @@ describe('test PCString.randomChar', () => {
 	});
 });
 
+describe('test PCString.randomString', () => {
+	it('returns random string with no input', () => {
+		expect.assertions(1);
+		const results = PCString.randomString();
+
+		expect(results).toHaveLength(10);
+	});
+
+	it('returns random string with an input of 5', () => {
+		expect.assertions(1);
+		const results = PCString.randomString(5);
+
+		expect(results).toHaveLength(5);
+	});
+});
+
