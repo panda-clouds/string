@@ -25,11 +25,11 @@ class PCString  {
 	}
 
 	static toAlphaLower(str) {
-		if (!string) {
+		if (!str) {
 			return '';
 		}
 
-		return.toLowerCase().replace(/[^a-z]/g, '');
+		return str.toLowerCase().replace(/[^a-z]/g, '');
 	}
 
 }
