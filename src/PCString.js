@@ -15,6 +15,22 @@ class PCString {
 		return string.indexOf(' ') >= 0;
 	}
 
+	static escapeJSON(string) {
+		if (!string) {
+			return '';
+		}
+
+		return string
+			.replace(/\n/g, '\\n')
+			.replace(/\t/g, '\\t')
+			.replace(/"/g, '\\"');
+		// .replace(/'/g, "\\'")
+		// .replace(/&/g, '\\&')
+		// .replace(/\r/g, '\\r')
+		// .replace(/\\b/g, '\\b')
+		// .replace(/\f/g, '\\f');
+	}
+
 	static removeWhitespace(string) {
 		if (!string) {
 			return '';

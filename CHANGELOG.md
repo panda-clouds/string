@@ -1,5 +1,9 @@
 ## PCBash Changelog
 
+### 1.2.0
+- Switched to npm registry
+- added escapeJSON
+
 ### 1.1.2
 - Switched to github registry
 

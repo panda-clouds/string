@@ -1,2 +1,1 @@
-//npm.pkg.github.com/:_authToken=${GITHUB_NPM_TOKEN}
-registry=https://npm.pkg.github.com/panda-clouds
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}

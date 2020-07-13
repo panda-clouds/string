@@ -151,6 +151,42 @@ describe('test PCString.removeWhitespace', () => {
 	});
 });
 
+describe('test PCString.escapeJSON', () => {
+	it('should replace double quotes', () => {
+		expect.assertions(1);
+		const string = 'My friend "betty" like "golf"';
+		const newString = PCString.escapeJSON(string);
+
+		// eslint-disable-next-line no-useless-escape
+		expect(newString).toBe('My friend \\"betty\\" like \\"golf\\"');
+	});
+
+	it('should replace new lines', () => {
+		expect.assertions(1);
+		const string = 'Name:Bob\nAge:36\nGender:Male';
+		const newString = PCString.escapeJSON(string);
+
+		expect(newString).toBe('Name:Bob\\nAge:36\\nGender:Male');
+	});
+
+
+	it('should replace tabs', () => {
+		expect.assertions(1);
+		const string = 'A\tB\tC	D';
+		const newString = PCString.escapeJSON(string);
+
+		expect(newString).toBe('A\\tB\\tC\\tD');
+	});
+
+	it('should handle null', () => {
+		expect.assertions(1);
+		const string = null;
+		const newString = PCString.escapeJSON(string);
+
+		expect(newString).toBe('');
+	});
+});
+
 describe('test PCString.domainSafeString', () => {
 	it('should replace underscores', () => {
 		expect.assertions(1);
